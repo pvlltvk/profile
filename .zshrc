@@ -73,6 +73,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,6 +89,7 @@ alias sudo='sudo '
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     eval $(dircolors ~/.dir_colors)
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+    alias l='ls -lha --color'
     alias ll='ls -lha --color'
     alias la='ls -lAh --color'
     alias sl=ls # often screw this up
@@ -96,6 +98,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     eval $(gdircolors ~/.dir_colors)
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+    alias l='gls -lha --color'
     alias ll='gls -lha --color'
     alias la='gls -lAh --color'
     alias sl=gls # often screw this up
@@ -104,6 +107,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "freebsd"* ]]; then
     eval $(gdircolors ~/.dir_colors)
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+    alias l='gls -lha --color'
     alias ll='gls -lha --color'
     alias la='gls -lAh --color'
     alias sl=gls # often screw this up
@@ -111,4 +115,4 @@ elif [[ "$OSTYPE" == "freebsd"* ]]; then
 fi
 
 # mc with xoria256 theme
-alias mc='mc -S xoria256'
+alias mc='mc -S solarized'
