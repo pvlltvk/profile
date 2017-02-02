@@ -52,7 +52,7 @@ ZSH_THEME="pygmalion"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     plugins=(git docker systemd)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    plugins=(git docker osx)
+    plugins=(git docker osx rbenv)
 else
     plugins=(git)
 fi
