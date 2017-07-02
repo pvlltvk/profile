@@ -14,7 +14,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nginx/nginx', {'rtp': 'contrib/vim'}
 Plug 'elzr/vim-json'
-Plug 'pearofducks/ansible-vim'
 
 call plug#end()
 
