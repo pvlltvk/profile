@@ -50,9 +50,9 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    plugins=(git docker systemd)
+    plugins=(git docker systemd rbenv)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    plugins=(git docker osx rbenv)
+    plugins=(git docker osx brew ruby rbenv rake bundler knife )
 else
     plugins=(git)
 fi
@@ -116,3 +116,7 @@ fi
 
 # mc with xoria256 theme
 alias mc='mc -S solarized'
+
+eval "$(rbenv init -)"
+
+echo -e "\033];$(hostname)\007"
