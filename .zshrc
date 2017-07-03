@@ -117,6 +117,4 @@ fi
 # mc with xoria256 theme
 alias mc='mc -S solarized'
 
-eval "$(rbenv init -)"
-
 echo -e "\033];$(hostname)\007"
