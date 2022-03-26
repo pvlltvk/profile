@@ -1,0 +1,9 @@
+[user]
+	name = Pavel Litvyak
+	email = pvlltvk@gmail.com
+[core]
+	editor = vim
+[http]
+	sslVerify = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

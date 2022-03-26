@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion"
+ZSH_THEME="pygmalion-kubectl"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -50,9 +50,9 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    plugins=(git docker systemd rbenv)
+    plugins=(git docker systemd kubectl pyenv helm tekton)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    plugins=(git docker osx brew ruby rbenv rake bundler knife )
+    plugins=(git docker osx brew ruby rbenv pyenv rake knife kubectl helm tekton)
 else
     plugins=(git)
 fi
@@ -60,8 +60,9 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export GOPATH='/Users/mad89/Work/go'
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$HOME/Library/Python/3.9/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -117,4 +118,32 @@ fi
 # mc with xoria256 theme
 alias mc='mc -S solarized'
 
+# Initialize rbenv
+eval "$(rbenv init - zsh)"
+
+# Initialize pyenv
+eval "$(pyenv init --path)"
+
 echo -e "\033];$(hostname)\007"
+
+#Some additional aliases for kubectl
+alias kctx="kubectx"
+alias kns="kubens"
+alias kgnow='kubectl get no -L node_pool,failure-domain.beta.kubernetes.io/zone -o wide'
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Add mitogen support for ansible
+export ANSIBLE_STRATEGY=mitogen_linear
+export ANSIBLE_STRATEGY_PLUGINS=/usr/local/lib/python3.9/site-packages/ansible_mitogen/plugins/strategy
+
+autoload -U compinit; compinit
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/Users/mad89/yandex-cloud/path.bash.inc' ]; then source '/Users/mad89/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/Users/mad89/yandex-cloud/completion.zsh.inc' ]; then source '/Users/mad89/yandex-cloud/completion.zsh.inc'; fi
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"
