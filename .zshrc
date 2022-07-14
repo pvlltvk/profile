@@ -52,7 +52,7 @@ DISABLE_AUTO_TITLE="true"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     plugins=(git docker systemd kubectl pyenv helm tekton)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    plugins=(git docker osx brew ruby rbenv pyenv rake knife kubectl helm tekton)
+    plugins=(git docker macos brew pyenv kubectl helm tekton)
 else
     plugins=(git)
 fi
@@ -118,12 +118,6 @@ fi
 # mc with xoria256 theme
 alias mc='mc -S solarized'
 
-# Initialize rbenv
-eval "$(rbenv init - zsh)"
-
-# Initialize pyenv
-eval "$(pyenv init --path)"
-
 echo -e "\033];$(hostname)\007"
 
 #Some additional aliases for kubectl
@@ -147,3 +141,8 @@ if [ -f '/Users/mad89/yandex-cloud/completion.zsh.inc' ]; then source '/Users/ma
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# pyenv initializing
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
